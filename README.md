@@ -73,3 +73,5 @@ Department of Chemistry
 Washington University in St. Louis
 
 Bingcui Guo
+# LLM4Chem
+Feel free to download the Jupyter Notebook as iteractive example to use. 
