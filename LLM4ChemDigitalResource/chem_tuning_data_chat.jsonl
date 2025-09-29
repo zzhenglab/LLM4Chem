@@ -1,0 +1,10 @@
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "What is the formula of acetone?"}, {"role": "assistant", "content": "C3H6O"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "How many 1H NMR signals would benzene have?"}, {"role": "assistant", "content": "1 (all hydrogens are equivalent)"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "What functional group is present in ethanol?"}, {"role": "assistant", "content": "A hydroxyl (-OH) group"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "What is the pKa of acetic acid approximately?"}, {"role": "assistant", "content": "Around 4.76"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "What is the molecular geometry of methane?"}, {"role": "assistant", "content": "Tetrahedral"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "What hybridization does the carbon atom in ethyne (C2H2) have?"}, {"role": "assistant", "content": "sp hybridization"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "Which reagent is commonly used to test for unsaturation (double bonds) in hydrocarbons?"}, {"role": "assistant", "content": "Bromine water (Br2 in CCl4)"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "What type of bond is formed between Na+ and Cl- in NaCl?"}, {"role": "assistant", "content": "An ionic bond"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "What is the IUPAC name of CH3-CH2-CH2-OH?"}, {"role": "assistant", "content": "Propan-1-ol"}]}
+{"messages": [{"role": "system", "content": "You are a chemistry tutor."}, {"role": "user", "content": "Which gas is released when hydrochloric acid reacts with sodium carbonate?"}, {"role": "assistant", "content": "Carbon dioxide (CO2)"}]}
