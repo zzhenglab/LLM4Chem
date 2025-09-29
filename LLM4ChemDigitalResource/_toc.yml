@@ -1,0 +1,10 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+format: jb-book
+root: intro
+chapters:
+  - file: LLM_for_Chemists_Chapter3_Foundations_of_AI_and_Tools_for_Chemists
+  - file: LLM_for_Chemists_Chapter4_Large_Language_Models_in_Chemistry
+  - file: LLM_for_Chemists_Chapter5_Literature_and_Knowledge_Mining_with_LLMs
+  - file: LLM_for_Chemists_Chapter6_Generative_Models_for_Molecule_and_Materials_Design
+  - file: LLM_for_Chemists_Chapter7_LLMs_and_Automation
