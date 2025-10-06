@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/Users/violet/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/violet/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/violet/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/violet/anaconda3/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/violet/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/violet/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/violet/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/violet/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from rdkit import Chem
+from rdkit.Chem import AllChem
+import py3Dmol
+
+# Example molecule: 2,3-butanediol
+mol = Chem.MolFromSmiles("CC(O)C(O)C")
+
+# Generate 3D coordinates
+AllChem.EmbedMolecule(mol)
+AllChem.MMFFOptimizeMolecule(mol)
+
+# Convert to MOL block with 3D coordinates
+mb = Chem.MolToMolBlock(mol)
+
+# Create 3D viewer
+view = py3Dmol.view(width=300, height=300)
+view.addModel(mb, "mol")   # add model in MOL format
+view.setStyle({"stick": {}})  # render as sticks
+view.zoomTo()              # fit view
+view.show()
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[20], line 3[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mrdkit[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Chem
+[1;32m      2[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mrdkit[39;00m[38;5;21;01m.[39;00m[38;5;21;01mChem[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m AllChem
+[0;32m----> 3[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mpy3Dmol[39;00m
+[1;32m      5[0m [38;5;66;03m# Example molecule: 2,3-butanediol[39;00m
+[1;32m      6[0m mol [38;5;241m=[39m Chem[38;5;241m.[39mMolFromSmiles([38;5;124m"[39m[38;5;124mCC(O)C(O)C[39m[38;5;124m"[39m)
+
+[0;31mModuleNotFoundError[0m: No module named 'py3Dmol'
+ModuleNotFoundError: No module named 'py3Dmol'
+
