@@ -6,7 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Search - Large Language Models for Chemists - Applications and Insights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 – Generative Models for Molecule and Materials Design &#8212; Large Language Models for Chemists - Applications and Insights</title>
   
   
   
@@ -55,12 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'search';</script>
-  <script src="_static/searchtools.js"></script>
-  <script src="_static/language_data.js"></script>
-  <script src="searchindex.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter6';</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 7 – LLMs and Automation" href="chapter7.html" />
+    <link rel="prev" title="Chapter 5 – Literature and Knowledge Mining with LLMs" href="chapter5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -92,7 +93,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="#"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -122,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -180,11 +179,11 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chapter3.html"><strong>Chapter 3 – Foundations of AI and Tools for Chemists</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter4.html"><strong>Chapter 4 – Large Language Models in Chemistry</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter5.html"><strong>Chapter 5 – Literature and Knowledge Mining with LLMs</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter6.html"><strong>Chapter 6 – Generative Models for Molecule and Materials Design</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Chapter 6 – Generative Models for Molecule and Materials Design</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter7.html"><strong>Chapter 7 – LLMs and Automation</strong></a></li>
 </ul>
 
@@ -257,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/zzhenglab/LLM4Chem/issues/new?title=Issue%20on%20page%20%2Fsearch.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/zzhenglab/LLM4Chem/issues/new?title=Issue%20on%20page%20%2Fchapter6.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,6 +268,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -310,7 +357,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -319,42 +368,103 @@ document.write(`
 </div>
               
               
-  <div class="bd-search-container">
-    <h1>Search</h1>
-    <noscript>
-      <div class="admonition error">
-        <p class="admonition-title">Error</p>
-        <p>Please activate JavaScript to enable the search functionality.</p>
-      </div>
-    </noscript>
-    
-<form class="bd-search d-flex align-items-center"
-      action="#"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    <div id="search-results"></div>
-  </div>
-  <script>
-    // Activate the search field on page load
-    let searchInput = document.querySelector("form.bd-search input");
-    if (searchInput) {
-        searchInput.focus();
-        searchInput.select();
-        console.log("[PST]: Set focus on search field.");
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 – Generative Models for Molecule and Materials Design</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#property-prediction-and-optimization">6.3 Property Prediction and Optimization</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="chapter-6-generative-models-for-molecule-and-materials-design">
+<h1><strong>Chapter 6 – Generative Models for Molecule and Materials Design</strong><a class="headerlink" href="#chapter-6-generative-models-for-molecule-and-materials-design" title="Link to this heading">#</a></h1>
+<p>Generative artificial intelligence is empowering chemists to go beyond analyzing existing data and start creating new molecules and materials. In this chapter, we introduce the fundamentals of generative models and their significance in chemical discovery. We discuss how large language models can be leveraged to generate novel molecular structures, and we examine modern workflows that integrate LLMs with specialized chemistry models. Key topics include how generative models are trained and used, strategies for validating and filtering the new molecules they propose, and methods for steering generation toward desired properties. By the end, the reader will understand how LLM-driven generative models can suggest creative solutions in molecule design, what challenges arise such as ensuring chemical validity and synthesizability, and how property optimization is achieved through iterative feedback.</p>
+<section id="property-prediction-and-optimization">
+<h2>6.3 Property Prediction and Optimization<a class="headerlink" href="#property-prediction-and-optimization" title="Link to this heading">#</a></h2>
+<p>Regardless of the method, a key component of generative design is having a <strong>property predictor</strong> in the loop. This predictor could be:</p>
+<ul class="simple">
+<li><p>A simple calculator (e.g., computing logP or molecular weight)</p></li>
+<li><p>A machine learning model (e.g., predicting activity or an experimental property)</p></li>
+<li><p>A physics-based model (e.g., quantum chemistry for excitation energy)</p></li>
+</ul>
+<p>The trade-off is accuracy vs. speed: ML predictors are fast but approximate, while physics-based methods are slower but more precise. A common strategy is to use ML predictors for <strong>guiding generation</strong> and then validate top candidates with more accurate methods.</p>
+<p>To illustrate, here’s a toy <strong>iterative optimization</strong> example: we try to maximize a molecule’s QED score (a proxy for drug-likeness) using hill-climbing—start from a molecule, make random modifications, and accept changes if the QED improves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">QED</span>
+
+<span class="c1"># Start from ethane</span>
+<span class="n">best_smiles</span> <span class="o">=</span> <span class="s2">&quot;CC&quot;</span>
+<span class="n">best_score</span> <span class="o">=</span> <span class="n">QED</span><span class="o">.</span><span class="n">qed</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">best_smiles</span><span class="p">))</span>
+
+<span class="c1"># Run 5 mutation steps</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Propose a mutation: randomly add one atom (C, N, or O) to the SMILES string</span>
+    <span class="n">new_smiles</span> <span class="o">=</span> <span class="n">best_smiles</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">])</span>
+    <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">new_smiles</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">mol</span><span class="p">:</span>  <span class="c1"># only consider valid molecules</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">QED</span><span class="o">.</span><span class="n">qed</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="n">best_score</span><span class="p">:</span>
+            <span class="n">best_smiles</span><span class="p">,</span> <span class="n">best_score</span> <span class="o">=</span> <span class="n">new_smiles</span><span class="p">,</span> <span class="n">score</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">: new best = </span><span class="si">{</span><span class="n">best_smiles</span><span class="si">}</span><span class="s2"> (QED = </span><span class="si">{</span><span class="n">best_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 0: new best = CCN (QED = 0.41)
+Step 1: new best = CCNO (QED = 0.42)
+Step 2: new best = CCNON (QED = 0.43)
+Step 3: new best = CCNON (QED = 0.43)
+Step 4: new best = CCNON (QED = 0.43)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
     }
-  </script>
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
 
               
               
@@ -363,12 +473,45 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Chapter 5 – Literature and Knowledge Mining with LLMs</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter7.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Chapter 7 – LLMs and Automation</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#property-prediction-and-optimization">6.3 Property Prediction and Optimization</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

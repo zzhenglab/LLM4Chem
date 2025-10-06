@@ -382,7 +382,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-python-environment">3.2.1 Setting Up a Python Environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-rdkit">3.2.3 Introduction to RDKit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-atoms-and-bonds">Exploring Atoms and Bonds</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-manipulation-and-standardisation">3.3.1 Molecule Manipulation and Standardisation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-handling-and-enumeration">3.3.2 Reaction Handling and Enumeration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-workflows">3.3.3 Visualization Workflows</a></li>
@@ -452,13 +451,13 @@ Download and install <a class="reference external" href="https://www.anaconda.co
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy version:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy version: 1.24.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy version: 2.0.2
 </pre></div>
 </div>
 </div>
@@ -472,7 +471,7 @@ Download and install <a class="reference external" href="https://www.anaconda.co
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">12.01</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="mf">16.00</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">atom</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">12.01</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="mf">16.00</span><span class="p">}</span>
 <span class="n">mw</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">atom</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">atom</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">atom</span><span class="p">[</span><span class="s2">&quot;O&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Molecular weight of C2H6O:&quot;</span><span class="p">,</span> <span class="n">mw</span><span class="p">)</span>
 </pre></div>
@@ -505,14 +504,14 @@ The most straightforward way to install it is via <strong>conda</strong> using t
 <p>After installation, test it as mentioned earlier:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w">  </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w">  </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CCO&#39;</span><span class="p">)</span> <span class="c1"># a simple molecule, ethanol print(mol)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;rdkit.Chem.rdchem.Mol object at 0x104474cf0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;rdkit.Chem.rdchem.Mol object at 0x7cc2c1ab6f10&gt;
 </pre></div>
 </div>
 </div>
@@ -522,7 +521,7 @@ If something went wrong, it may return <code class="docutils literal notranslate
 <p>Here’s another quick test:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -535,7 +534,7 @@ If something went wrong, it may return <code class="docutils literal notranslate
 <p>In RDKit, the fundamental object is the Mol – an object representing a molecule. Typically, you obtain a Mol by reading in some representation, such as a SMILES string or a Mol file. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -544,17 +543,10 @@ If something went wrong, it may return <code class="docutils literal notranslate
 <p>This creates an RDKit molecule for ethanol (CCO). You can also read from a MOL file or SDF:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromMolFile</span><span class="p">(</span><span class="s2">&quot;molecule.mol&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mol2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromMolFile</span><span class="p">(</span><span class="s2">&quot;molecule.mol&quot;</span><span class="p">)</span>
-
-<span class="ne">OSError</span>: Bad input file molecule.mol
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Create a .mol file from the mol SMILE</span>
+<span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolFile</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="s2">&quot;molecule.mol&quot;</span><span class="p">)</span>
+<span class="c1"># 2. Read the molecule back</span>
+<span class="n">mol2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromMolFile</span><span class="p">(</span><span class="s2">&quot;molecule.mol&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -562,7 +554,7 @@ If something went wrong, it may return <code class="docutils literal notranslate
 <p>RDKit supports many input formats (SMILES, SDF, MolBlock, InChI, etc.). If reading multiple molecules from a file (like an SDF with many entries), there are “supplier” objects (e.g., Chem.SDMolSupplier which you can loop over). But for simplicity, let’s stick to single molecules for now. What is inside a Mol object? Conceptually, RDKit represents a molecule as a graph: atoms connected by bonds. Each Atom has properties (like atomic number, formal charge, etc.), and each Bond has a type (single, double, aromatic, etc.), possibly stereochemistry, etc. RDKit’s Mol holds all this, and provides methods to access it. For example, you can iterate over atoms or bonds</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetAtoms</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetSymbol</span><span class="p">(),</span> <span class="n">atom</span><span class="o">.</span><span class="n">GetAtomicNum</span><span class="p">())</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetAtoms</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetSymbol</span><span class="p">(),</span> <span class="n">atom</span><span class="o">.</span><span class="n">GetAtomicNum</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -574,15 +566,13 @@ O 8
 </div>
 </div>
 </div>
-</section>
-<section id="exploring-atoms-and-bonds">
-<h2>Exploring Atoms and Bonds<a class="headerlink" href="#exploring-atoms-and-bonds" title="Link to this heading">#</a></h2>
+<p><strong>Exploring Atoms and Bonds</strong></p>
 <p>This example prints each atom’s symbol and atomic number in a molecule.<br />
 Similarly, <code class="docutils literal notranslate"><span class="pre">mol.GetBonds()</span></code> lets you loop through bonds.</p>
 <p>Each <strong>Atom</strong> or <strong>Bond</strong> object has a rich set of methods, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methane</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">methane</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
 <span class="n">num_atoms</span> <span class="o">=</span> <span class="n">methane</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of atoms in methane:&quot;</span><span class="p">,</span> <span class="n">num_atoms</span><span class="p">)</span>
 </pre></div>
@@ -601,7 +591,7 @@ In the SMILES <code class="docutils literal notranslate"><span class="pre">&quot
 <p>If you want to include hydrogens explicitly, you can add them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methane_with_H</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">methane</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">methane_with_H</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">methane</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of atoms in methane with H:&quot;</span><span class="p">,</span> <span class="n">methane_with_H</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -618,7 +608,7 @@ RDKit’s <code class="docutils literal notranslate"><span class="pre">AddHs</sp
 <p>To illustrate accessing atomic information, consider ethanol <code class="docutils literal notranslate"><span class="pre">&quot;CCO&quot;</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ethanol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ethanol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">ethanol</span><span class="o">.</span><span class="n">GetAtoms</span><span class="p">():</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetSymbol</span><span class="p">(),</span> <span class="n">atom</span><span class="o">.</span><span class="n">GetMass</span><span class="p">())</span>
 </pre></div>
@@ -640,7 +630,7 @@ O 15.999
 <p>For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span>
 <span class="n">mw</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span> <span class="c1"># molecular weight</span>
 <span class="n">logp</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span> <span class="c1"># Wildman-Crippen LogP</span>
 <span class="n">hbd</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">NumHDonors</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span> <span class="c1"># number of H-bond donors</span>
@@ -673,7 +663,7 @@ O 15.999
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span>
 <span class="c1"># Create a molecule from SMILES</span>
 <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccccc1O&quot;</span><span class="p">)</span> <span class="c1"># phenol (benzene ring with an -OH)</span>
@@ -710,7 +700,7 @@ InChI: InChI=1S/C6H6O/c7-6-4-2-1-3-5-6/h1-5,7H
 <p><strong>Example:</strong> Consider sodium acetate, which in SMILES can be written as <code class="docutils literal notranslate"><span class="pre">CC(=O)[O-].[Na+]</span></code>. Using RDKit, we can split this into fragments and keep the main organic molecule (acetate) while discarding the sodium counter-ion. This ensures that the data is standardized and suitable for modeling or further analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 
 <span class="c1"># Create sodium acetate molecule (acetic acid deprotonated plus Na+)</span>
 <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CC(=O)[O-].[Na+]&quot;</span><span class="p">)</span>
@@ -738,7 +728,7 @@ InChI: InChI=1S/C6H6O/c7-6-4-2-1-3-5-6/h1-5,7H
 <p>For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.MolStandardize</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdMolStandardize</span>
 
 <span class="c1"># Example molecule (enol form of an amide, possible tautomer)</span>
@@ -764,7 +754,7 @@ For example, when you read a SMILES like <code class="docutils literal notransla
 <p>If you need to enumerate all atoms including hydrogens—for tasks like 3D operations or explicit valence counting—you can <strong>add them explicitly</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 
 <span class="c1"># Create ethanol molecule</span>
 <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
@@ -789,7 +779,7 @@ For example, when you read a SMILES like <code class="docutils literal notransla
 <p>Example pipeline: given a list of SMILES, standardize each by removing salts, then keep only those under a set molecular weight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span>
 
 <span class="c1"># Example molecules: sodium acetate, benzoic acid, and an amine salt</span>
@@ -834,7 +824,7 @@ Kept CN(C)C with MW 59.1
 <p>This SMARTS doesn’t explicitly account for the HCl leaving group (we are essentially ignoring it in the products by not writing it, so it will be a byproduct not captured). For our purposes of enumeration, that’s fine. Using RDKit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
 
 <span class="c1"># Define an amide formation reaction: acid chloride + amine → amide</span>
@@ -865,7 +855,7 @@ For example, if you have a list of acid chlorides and a list of amines, you can 
 <p>For simple reactions like this, you usually get one main product, though some reactions may yield multiple products or stereoisomers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
 
 <span class="c1"># Define amide formation reaction: acid chloride + amine → amide</span>
@@ -907,7 +897,7 @@ O=C(Cl)c1ccccc1 + Nc1ccccc1 -&gt; O=C(Nc1ccccc1)c1ccccc1
 <p>For <strong>publication-quality figures</strong>, RDKit’s <code class="docutils literal notranslate"><span class="pre">MolDraw2D</span></code> can export to SVG (scalable vector graphics). For most quick tasks, PNG via <code class="docutils literal notranslate"><span class="pre">MolToImage</span></code> is sufficient.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
 
@@ -938,7 +928,7 @@ O=C(Cl)c1ccccc1 + Nc1ccccc1 -&gt; O=C(Nc1ccccc1)c1ccccc1
 <p>Within notebooks, a common solution is <strong>py3Dmol</strong>, which brings the 3Dmol.js WebGL viewer into Python for interactive molecular visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">py3Dmol</span>
 
@@ -1082,7 +1072,6 @@ viewer_17591275469344091.render();
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-python-environment">3.2.1 Setting Up a Python Environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-rdkit">3.2.3 Introduction to RDKit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-atoms-and-bonds">Exploring Atoms and Bonds</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-manipulation-and-standardisation">3.3.1 Molecule Manipulation and Standardisation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-handling-and-enumeration">3.3.2 Reaction Handling and Enumeration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-workflows">3.3.3 Visualization Workflows</a></li>

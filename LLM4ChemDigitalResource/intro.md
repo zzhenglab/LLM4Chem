@@ -1,4 +1,4 @@
-# Large Language Models for Chemists: Applications and Insights
+# **Large Language Models for Chemists: Applications and Insights**
 
 <div style="max-width: 800px; margin: auto; text-align: justify;">
 
