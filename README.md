@@ -31,11 +31,11 @@ llm4chem/
 
 ## Table of Content
 
-Chapter 3 – Foundations of AI and Tools for Chemists
-Chapter 4 – Large Language Models in Chemistry
-Chapter 5 – Literature and Knowledge Mining with LLMs
-Chapter 6 – Generative Models for Molecule and Materials Design
-Chapter 7 – LLMs and Automation
+Chapter 3 – Foundations of AI and Tools for Chemists  
+Chapter 4 – Large Language Models in Chemistry  
+Chapter 5 – Literature and Knowledge Mining with LLMs  
+Chapter 6 – Generative Models for Molecule and Materials Design  
+Chapter 7 – LLMs and Automation  
 
 ---
 
