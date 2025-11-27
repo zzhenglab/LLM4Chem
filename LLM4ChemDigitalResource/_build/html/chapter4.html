@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Chapter 4 – Large Language Models in Chemistry &#8212; Large Language Models for Chemists - Applications and Insights</title>
+    <title>Chapter 4 – Large Language Models in Chemistry</title>
   
   
   
@@ -148,14 +148,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/newlogo.png" class="logo__image only-light" alt="Large Language Models for Chemists - Applications and Insights - Home"/>
-    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt="Large Language Models for Chemists - Applications and Insights - Home"/>`);</script>
   
+    <p class="title logo__title"></p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -175,7 +169,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Large Language Models for Chemists: Applications and Insights
+                    Welcome to your Jupyter Book
                 </a>
             </li>
         </ul>
@@ -239,7 +233,7 @@
       
       
       
-      <li><a href="https://github.com/zzhenglab/LLM4Chem" target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -256,7 +250,7 @@
       
       
       
-      <li><a href="https://github.com/zzhenglab/LLM4Chem/issues/new?title=Issue%20on%20page%20%2Fchapter4.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter4.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +374,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-specific-fine-tuning-pipelines">4.2.2 Domain-Specific Fine-Tuning Pipelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-initiate-the-fine-tuning-job">Step 3: Initiate the Fine-Tuning Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-chemistry-focused-conversational-agent">4.3 Building a Chemistry-Focused Conversational Agent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-use-and-function-calling">4.5 Tool Use and Function-Calling</a></li>
 </ul>
@@ -397,16 +391,14 @@ document.write(`
   <section id="chapter-4-large-language-models-in-chemistry">
 <h1><strong>Chapter 4 – Large Language Models in Chemistry</strong><a class="headerlink" href="#chapter-4-large-language-models-in-chemistry" title="Link to this heading">#</a></h1>
 <p>This chapter explores how transformer-based LLMs can be applied in the chemical sciences. We cover how they process chemical information, strategies for prompting and fine-tuning, and building chemistry-focused conversational agents. Extensions to multimodal data (structures, spectra) and integration with external tools are discussed, along with evaluation, reliability, and safety (e.g., avoiding hallucinations). By the end, readers will understand how to apply and adapt LLMs to chemical problems responsibly.</p>
-<section id="domain-specific-fine-tuning-pipelines">
-<h2>4.2.2 Domain-Specific Fine-Tuning Pipelines<a class="headerlink" href="#domain-specific-fine-tuning-pipelines" title="Link to this heading">#</a></h2>
-<p><strong>Step 1: Prepare Your Dataset</strong></p>
+<p>Step 1: Prepare Your Dataset</p>
 <p>Gather examples of the task you want the model to learn (e.g., question–answer or prompt–completion pairs).<br />
 For instance, if you want a model that assists with chemical reaction questions, you could collect problems as <strong>prompts</strong> and their solutions as <strong>completions</strong>.</p>
 <p>The dataset must be in <strong>JSONL (JSON Lines)</strong> format, where each line is a JSON object with <code class="docutils literal notranslate"><span class="pre">&quot;prompt&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;completion&quot;</span></code> fields. The <code class="docutils literal notranslate"><span class="pre">&quot;prompt&quot;</span></code> is the input you would provide at runtime, and the <code class="docutils literal notranslate"><span class="pre">&quot;completion&quot;</span></code> is the expected response.</p>
 <p>Be sure to include any formatting in the prompt that you plan to use during inference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -487,7 +479,7 @@ For instance, if you want a model that assists with chemical reaction questions,
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrote chat-format file!&quot;</span><span class="p">)</span>
-<span class="err">!</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="n">chem_tuning_data_chat</span><span class="o">.</span><span class="n">jsonl</span>
+<span class="o">!</span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span>chem_tuning_data_chat.jsonl
 </pre></div>
 </div>
 </div>
@@ -502,7 +494,7 @@ For instance, if you want a model that assists with chemical reaction questions,
 </div>
 </div>
 </div>
-<p><strong>Step 2: Upload and Validate the Dataset</strong></p>
+<p>Step 2: Upload and Validate the Dataset</p>
 <p>Once you have a <code class="docutils literal notranslate"><span class="pre">.jsonl</span></code> file (e.g., <code class="docutils literal notranslate"><span class="pre">chem_tuning_data.jsonl</span></code>), you can use the <strong>OpenAI CLI</strong> to validate and upload it. OpenAI provides a handy command to check the format:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openai<span class="w"> </span>api<span class="w"> </span>files.create<span class="w"> </span>-f<span class="w"> </span>chem_tuning_data_chat.jsonl<span class="w"> </span>-p<span class="w"> </span>fine-tune
 </pre></div>
@@ -528,25 +520,28 @@ The CLI and Python libraries will automatically detect it if set as <code class=
 <p>⚠️ Important: API keys grant access to your OpenAI account. Never share them in public notebooks, commits, or screenshots. Use environment variables or Colab’s secret manager to keep them secure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">google</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;OPENAI_API_KEY&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: google in /usr/local/lib/python3.12/dist-packages (2.0.3)
-Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.12/dist-packages (from google) (4.13.5)
-Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.12/dist-packages (from beautifulsoup4-&gt;google) (2.8)
-Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/python3.12/dist-packages (from beautifulsoup4-&gt;google) (4.15.0)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;OPENAI_API_KEY&#39;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;google&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">openai</span> <span class="n">api</span> <span class="n">files</span><span class="o">.</span><span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">chem_tuning_data_chat</span><span class="o">.</span><span class="n">jsonl</span> <span class="o">-</span><span class="n">p</span> <span class="n">fine</span><span class="o">-</span><span class="n">tune</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>openai<span class="w"> </span>api<span class="w"> </span>files.create<span class="w"> </span>-f<span class="w"> </span>chem_tuning_data_chat.jsonl<span class="w"> </span>-p<span class="w"> </span>fine-tune
 </pre></div>
 </div>
 </div>
@@ -567,7 +562,8 @@ Requirement already satisfied: typing-extensions&gt;=4.0.0 in /usr/local/lib/pyt
 </div>
 </div>
 </div>
-<p><strong>Step 3: Initiate the Fine-Tuning Job</strong></p>
+<section id="step-3-initiate-the-fine-tuning-job">
+<h2>Step 3: Initiate the Fine-Tuning Job<a class="headerlink" href="#step-3-initiate-the-fine-tuning-job" title="Link to this heading">#</a></h2>
 <p>Now you can start the fine-tuning process by specifying a base model.<br />
 As of 2025, OpenAI supports fine-tuning on certain GPT-3.5 and GPT-4 variants (e.g., <code class="docutils literal notranslate"><span class="pre">gpt-3.5-turbo</span></code> and a special <code class="docutils literal notranslate"><span class="pre">gpt-4o</span></code> model).</p>
 <p>For example, to fine-tune <code class="docutils literal notranslate"><span class="pre">gpt-3.5-turbo</span></code> with your uploaded file:</p>
@@ -580,7 +576,7 @@ As of 2025, OpenAI supports fine-tuning on certain GPT-3.5 and GPT-4 variants (e
 <p>OpenAI will queue and run the job on their servers — training may take minutes to an hour depending on dataset size and model complexity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">openai</span> <span class="n">api</span> <span class="n">fine_tuning</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">create</span> <span class="o">-</span><span class="n">F</span> <span class="s2">&quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;</span> <span class="o">-</span><span class="n">m</span> <span class="n">gpt</span><span class="o">-</span><span class="mf">3.5</span><span class="o">-</span><span class="n">turbo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>openai<span class="w"> </span>api<span class="w"> </span>fine_tuning.jobs.create<span class="w"> </span>-F<span class="w"> </span><span class="s2">&quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;</span><span class="w"> </span>-m<span class="w"> </span>gpt-3.5-turbo
 </pre></div>
 </div>
 </div>
@@ -633,7 +629,7 @@ As of 2025, OpenAI supports fine-tuning on certain GPT-3.5 and GPT-4 variants (e
 </div>
 </div>
 </div>
-<p><strong>Step 4: Monitor the Fine-Tune and Wait</strong></p>
+<p>Step 4: Monitor the Fine-Tune and Wait</p>
 <p>You can check the status of your fine-tuning jobs with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openai<span class="w"> </span>api<span class="w"> </span>fine_tunes.list
 </pre></div>
@@ -644,7 +640,7 @@ If successful, you’ll receive a new model ID, for example: <code class="docuti
 <p>This fine-tuned model is now stored on OpenAI’s side and ready to use in API calls.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">openai</span> <span class="n">api</span> <span class="n">fine_tuning</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>openai<span class="w"> </span>api<span class="w"> </span>fine_tuning.jobs.list
 </pre></div>
 </div>
 </div>
@@ -793,11 +789,11 @@ If successful, you’ll receive a new model ID, for example: <code class="docuti
 </div>
 </div>
 </div>
-<p><strong>Step 5: Using the Fine-Tuned Model</strong><br />
+<p>Step 5: Using the Fine-Tuned Model<br />
 Once ready, you use it just like any other model in the API, but by specifying the new model name. For example, in Python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
 
@@ -818,19 +814,18 @@ Once ready, you use it just like any other model in the API, but by specifying t
 </div>
 </div>
 </div>
-<p><strong>Step 6: Test and Refine</strong></p>
+<p>Step 6: Test and Refine</p>
 <p>Evaluate your fine-tuned model on examples not in the training set to check performance. If weaknesses appear (e.g., struggles with organometallic nomenclature), add more high-quality, consistent examples and fine-tune again. Iteration is normal, but avoid over-tuning on inconsistent data. You can also fine-tune in stages by using your fine-tuned model as the new base.</p>
-<p><strong>Step 7: Cost and Considerations</strong></p>
+<p>Step 7: Cost and Considerations</p>
 <p>Fine-tuning has costs: you pay for training tokens and a slightly higher per-call rate for the custom model. Weigh the benefits against using a base model with careful prompting. Remember, fine-tuning shapes style and task specialization, not general knowledge—it won’t add facts beyond the base model’s cutoff unless explicitly provided in training data.</p>
 </section>
 <section id="building-a-chemistry-focused-conversational-agent">
 <h2>4.3 Building a Chemistry-Focused Conversational Agent<a class="headerlink" href="#building-a-chemistry-focused-conversational-agent" title="Link to this heading">#</a></h2>
 <p>LLMs can power interactive chemistry assistants that maintain dialogue, use tools, and serve students or researchers. To improve reliability, combine them with <strong>retrieval-augmented generation (RAG)</strong>, where the model fetches relevant passages (e.g., lab manuals, reaction guides) before answering. This reduces hallucinations and ensures responses are grounded in your own chemistry resources.</p>
-<p><strong>Step 1: Prepare and Chunk Your Chemistry Content</strong></p>
-<p>Split your chemistry sources into small, meaningful text chunks (e.g., by paragraph). Each chunk should fit under the token limits (typically 4096 or 8192).</p>
+<p>Step 1: Prepare and Chunk Your Chemistry Content. Split your chemistry sources into small, meaningful text chunks (e.g., by paragraph). Each chunk should fit under the token limits (typically 4096 or 8192).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example documents</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example documents</span>
 <span class="n">documents</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;IR Guide&quot;</span><span class="p">,</span>
@@ -852,11 +847,11 @@ Once ready, you use it just like any other model in the API, but by specifying t
 </div>
 </div>
 </div>
-<p><strong>Step 2: Generate Embeddings with OpenAI</strong></p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">text-embedding-ada-002</span></code> to convert each chunk to a vector</p>
+<p>Step 2: Generate Embeddings with OpenAI. Use <code class="docutils literal notranslate"><span class="pre">text-embedding-ada-002</span></code> to convert each</p>
+<p>chunk to a vector</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
 <span class="c1"># Initialize the client (make sure OPENAI_API_KEY is set in your environment)</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
@@ -886,11 +881,10 @@ Once ready, you use it just like any other model in the API, but by specifying t
 </div>
 </div>
 </div>
-<p><strong>Step 3: Embed the Question and Retrieve Similar Chunks</strong></p>
-<p>Embed the user’s question, then use cosine similarity to find top-matching chunks.</p>
+<p>Step 3: Embed the Question and Retrieve Similar Chunks. Embed the user’s question, then use cosine similarity to find top-matching chunks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">numpy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
@@ -931,11 +925,10 @@ To dehydrate alcohols, use H2SO4 or POCl3...
 </div>
 </div>
 </div>
-<p><strong>Step 4: Create Prompt and Call ChatGPT</strong></p>
-<p>Construct a prompt that includes the context, then pass it to ChatGPT.</p>
+<p>Step 4: Create Prompt and Call ChatGPT. Construct a prompt that includes the context, then pass it to ChatGPT.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
 <span class="c1"># Initialize client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
@@ -979,7 +972,7 @@ To dehydrate alcohols, use H2SO4 or POCl3...
 <p>This approach transforms a chatbot from speculation to computation, making it a reliable assistant for chemistry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_molecular_weight</span><span class="p">(</span><span class="n">compound_name</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_molecular_weight</span><span class="p">(</span><span class="n">compound_name</span><span class="p">):</span>
     <span class="n">weights</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="mf">18.015</span><span class="p">,</span>
         <span class="s2">&quot;caffeine&quot;</span><span class="p">:</span> <span class="mf">194.19</span>
@@ -1071,7 +1064,7 @@ To dehydrate alcohols, use H2SO4 or POCl3...
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-specific-fine-tuning-pipelines">4.2.2 Domain-Specific Fine-Tuning Pipelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-initiate-the-fine-tuning-job">Step 3: Initiate the Fine-Tuning Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-chemistry-focused-conversational-agent">4.3 Building a Chemistry-Focused Conversational Agent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-use-and-function-calling">4.5 Tool Use and Function-Calling</a></li>
 </ul>
@@ -1088,7 +1081,7 @@ To dehydrate alcohols, use H2SO4 or POCl3...
   <div class="footer-item">
     
 <p class="component-author">
-By Bingcui Guo & Zhiling Zheng
+By Bingcui Guo & Zhiling "Zach" Zheng
 </p>
 
   </div>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Chapter 6 – Generative Models for Molecule and Materials Design &#8212; Large Language Models for Chemists - Applications and Insights</title>
+    <title>Chapter 6 – Generative Models for Molecule and Materials Design</title>
   
   
   
@@ -148,14 +148,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/newlogo.png" class="logo__image only-light" alt="Large Language Models for Chemists - Applications and Insights - Home"/>
-    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt="Large Language Models for Chemists - Applications and Insights - Home"/>`);</script>
   
+    <p class="title logo__title"></p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -175,7 +169,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Large Language Models for Chemists: Applications and Insights
+                    Welcome to your Jupyter Book
                 </a>
             </li>
         </ul>
@@ -239,7 +233,7 @@
       
       
       
-      <li><a href="https://github.com/zzhenglab/LLM4Chem" target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -256,7 +250,7 @@
       
       
       
-      <li><a href="https://github.com/zzhenglab/LLM4Chem/issues/new?title=Issue%20on%20page%20%2Fchapter6.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter6.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -407,7 +401,7 @@ document.write(`
 <p>To illustrate, here’s a toy <strong>iterative optimization</strong> example: we try to maximize a molecule’s QED score (a proxy for drug-likeness) using hill-climbing—start from a molecule, make random modifications, and accept changes if the QED improves.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">QED</span>
 
@@ -431,11 +425,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 0: new best = CCN (QED = 0.41)
-Step 1: new best = CCNO (QED = 0.42)
-Step 2: new best = CCNON (QED = 0.43)
-Step 3: new best = CCNON (QED = 0.43)
-Step 4: new best = CCNON (QED = 0.43)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 0: new best = CCC (QED = 0.39)
+Step 1: new best = CCCC (QED = 0.43)
+Step 2: new best = CCCCN (QED = 0.51)
+Step 3: new best = CCCCN (QED = 0.51)
+Step 4: new best = CCCCN (QED = 0.51)
 </pre></div>
 </div>
 </div>
@@ -522,7 +516,7 @@ Step 4: new best = CCNON (QED = 0.43)
   <div class="footer-item">
     
 <p class="component-author">
-By Bingcui Guo & Zhiling Zheng
+By Bingcui Guo & Zhiling "Zach" Zheng
 </p>
 
   </div>

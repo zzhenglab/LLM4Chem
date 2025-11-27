@@ -21,14 +21,44 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-mol2 = Chem.MolFromMolFile("molecule.mol")
+from rdkit import Chem
+from rdkit.Chem import Draw
+from IPython.display import Image, display
+
+# Single molecule: pyridine
+mol = Chem.MolFromSmiles("c1ccncc1")
+img = Draw.MolToImage(mol, size=(150, 150))
+img.save("pyridine.png")  # Save to file
+display(Image(filename="pyridine.png"))  # Show inline
+
+# Multiple molecules in a grid
+smiles_list = ["CCO", "c1ccccc1", "CCN(CC)CC", "C1=CC=CC=C1C(O)=O"]  # ethanol, benzene, triethylamine, benzoic acid
+mols = [Chem.MolFromSmiles(s) for s in smiles_list]
+
+img2 = Draw.MolsToGridImage(
+    mols,
+    molsPerRow=2,
+    subImgSize=(150, 150),
+    legends=["Ethanol", "Benzene", "Triethylamine", "Benzoic acid"]
+)
+img2.save("grid.png")
+display(Image(filename="grid.png"))  # Show inline
+
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mOSError[0m                                   Traceback (most recent call last)
-Cell [0;32mIn[7], line 1[0m
-[0;32m----> 1[0m mol2 [38;5;241m=[39m Chem[38;5;241m.[39mMolFromMolFile([38;5;124m"[39m[38;5;124mmolecule.mol[39m[38;5;124m"[39m)
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [0;32mIn[21], line 21[0m
+[1;32m     13[0m mols [38;5;241m=[39m [Chem[38;5;241m.[39mMolFromSmiles(s) [38;5;28;01mfor[39;00m s [38;5;129;01min[39;00m smiles_list]
+[1;32m     15[0m img2 [38;5;241m=[39m Draw[38;5;241m.[39mMolsToGridImage(
+[1;32m     16[0m     mols,
+[1;32m     17[0m     molsPerRow[38;5;241m=[39m[38;5;241m2[39m,
+[1;32m     18[0m     subImgSize[38;5;241m=[39m([38;5;241m150[39m, [38;5;241m150[39m),
+[1;32m     19[0m     legends[38;5;241m=[39m[[38;5;124m"[39m[38;5;124mEthanol[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mBenzene[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mTriethylamine[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mBenzoic acid[39m[38;5;124m"[39m]
+[1;32m     20[0m )
+[0;32m---> 21[0m img2[38;5;241m.[39msave([38;5;124m"[39m[38;5;124mgrid.png[39m[38;5;124m"[39m)
+[1;32m     22[0m display(Image(filename[38;5;241m=[39m[38;5;124m"[39m[38;5;124mgrid.png[39m[38;5;124m"[39m))
 
-[0;31mOSError[0m: Bad input file molecule.mol
-OSError: Bad input file molecule.mol
+[0;31mAttributeError[0m: 'Image' object has no attribute 'save'
+AttributeError: 'Image' object has no attribute 'save'
 
