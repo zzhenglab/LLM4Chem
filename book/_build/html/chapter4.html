@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4 – Large Language Models in Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter4';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 5 – Literature and Knowledge Mining with LLMs" href="chapter5.html" />
+    <link rel="prev" title="Chapter 3 – Foundations of AI and Tools for Chemists" href="chapter3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/newlogo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Large Language Models for Chemists: Applications and Insights
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html"><strong>Chapter 3 – Foundations of AI and Tools for Chemists</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Chapter 4 – Large Language Models in Chemistry</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html"><strong>Chapter 5 – Literature and Knowledge Mining with LLMs</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html"><strong>Chapter 6 – Generative Models for Molecule and Materials Design</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html"><strong>Chapter 7 – LLMs and Automation</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4 – Large Language Models in Chemistry</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-initiate-the-fine-tuning-job">Step 3: Initiate the Fine-Tuning Job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-chemistry-focused-conversational-agent">4.3 Building a Chemistry-Focused Conversational Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-use-and-function-calling">4.5 Tool Use and Function-Calling</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="chapter-4-large-language-models-in-chemistry">
+<h1><strong>Chapter 4 – Large Language Models in Chemistry</strong><a class="headerlink" href="#chapter-4-large-language-models-in-chemistry" title="Link to this heading">#</a></h1>
+<p>This chapter explores how transformer-based LLMs can be applied in the chemical sciences. We cover how they process chemical information, strategies for prompting and fine-tuning, and building chemistry-focused conversational agents. Extensions to multimodal data (structures, spectra) and integration with external tools are discussed, along with evaluation, reliability, and safety (e.g., avoiding hallucinations). By the end, readers will understand how to apply and adapt LLMs to chemical problems responsibly.</p>
+<p>Step 1: Prepare Your Dataset</p>
+<p>Gather examples of the task you want the model to learn (e.g., question–answer or prompt–completion pairs).<br />
+For instance, if you want a model that assists with chemical reaction questions, you could collect problems as <strong>prompts</strong> and their solutions as <strong>completions</strong>.</p>
+<p>The dataset must be in <strong>JSONL (JSON Lines)</strong> format, where each line is a JSON object with <code class="docutils literal notranslate"><span class="pre">&quot;prompt&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;completion&quot;</span></code> fields. The <code class="docutils literal notranslate"><span class="pre">&quot;prompt&quot;</span></code> is the input you would provide at runtime, and the <code class="docutils literal notranslate"><span class="pre">&quot;completion&quot;</span></code> is the expected response.</p>
+<p>Be sure to include any formatting in the prompt that you plan to use during inference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the formula of acetone?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;C3H6O&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;How many 1H NMR signals would benzene have?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;1 (all hydrogens are equivalent)&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What functional group is present in ethanol?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;A hydroxyl (-OH) group&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the pKa of acetic acid approximately?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Around 4.76&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the molecular geometry of methane?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Tetrahedral&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What hybridization does the carbon atom in ethyne (C2H2) have?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;sp hybridization&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Which reagent is commonly used to test for unsaturation (double bonds) in hydrocarbons?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Bromine water (Br2 in CCl4)&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What type of bond is formed between Na+ and Cl- in NaCl?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;An ionic bond&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the IUPAC name of CH3-CH2-CH2-OH?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Propan-1-ol&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a chemistry tutor.&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Which gas is released when hydrochloric acid reacts with sodium carbonate?&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Carbon dioxide (CO2)&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;chem_tuning_data_chat.jsonl&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrote chat-format file!&quot;</span><span class="p">)</span>
+<span class="err">!</span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="n">chem_tuning_data_chat</span><span class="o">.</span><span class="n">jsonl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wrote chat-format file!
+{&quot;messages&quot;: [{&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a chemistry tutor.&quot;}, {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is the formula of acetone?&quot;}, {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;C3H6O&quot;}]}
+{&quot;messages&quot;: [{&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a chemistry tutor.&quot;}, {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;How many 1H NMR signals would benzene have?&quot;}, {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;1 (all hydrogens are equivalent)&quot;}]}
+{&quot;messages&quot;: [{&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a chemistry tutor.&quot;}, {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What functional group is present in ethanol?&quot;}, {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;A hydroxyl (-OH) group&quot;}]}
+{&quot;messages&quot;: [{&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a chemistry tutor.&quot;}, {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is the pKa of acetic acid approximately?&quot;}, {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Around 4.76&quot;}]}
+{&quot;messages&quot;: [{&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a chemistry tutor.&quot;}, {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is the molecular geometry of methane?&quot;}, {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Tetrahedral&quot;}]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 2: Upload and Validate the Dataset</p>
+<p>Once you have a <code class="docutils literal notranslate"><span class="pre">.jsonl</span></code> file (e.g., <code class="docutils literal notranslate"><span class="pre">chem_tuning_data.jsonl</span></code>), you can use the <strong>OpenAI CLI</strong> to validate and upload it. OpenAI provides a handy command to check the format:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openai<span class="w"> </span>api<span class="w"> </span>files.create<span class="w"> </span>-f<span class="w"> </span>chem_tuning_data_chat.jsonl<span class="w"> </span>-p<span class="w"> </span>fine-tune
+</pre></div>
+</div>
+<p>To run this successfully, you must have your API key set as OPENAI_API_KEY in your environment.</p>
+<p>In Colab, you can use the <strong>Secrets tab</strong> (🔑) to securely store your API key.<br />
+The CLI and Python libraries will automatically detect it if set as <code class="docutils literal notranslate"><span class="pre">OPENAI_API_KEY</span></code>.</p>
+<p>In general, the steps to get started are:</p>
+<ol class="arabic simple">
+<li><p>Create an <strong>OpenAI account</strong></p></li>
+<li><p>Generate an <strong>API key</strong> from your account dashboard</p></li>
+<li><p>Set the key as an environment variable (<code class="docutils literal notranslate"><span class="pre">OPENAI_API_KEY</span></code>) in your working environment</p></li>
+</ol>
+<p>You can set it in different ways:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;sk-your-api-key&quot;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s2">&quot;sk-your-api-key&quot;</span>
+</pre></div>
+</div>
+<p>⚠️ Important: API keys grant access to your OpenAI account. Never share them in public notebooks, commits, or screenshots. Use environment variables or Colab’s secret manager to keep them secure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;OPENAI_API_KEY&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">openai</span> <span class="n">api</span> <span class="n">files</span><span class="o">.</span><span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">chem_tuning_data_chat</span><span class="o">.</span><span class="n">jsonl</span> <span class="o">-</span><span class="n">p</span> <span class="n">fine</span><span class="o">-</span><span class="n">tune</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Upload progress: 100% 2.16k/2.16k [00:00&lt;00:00, 3.62kit/s]
+{
+  &quot;id&quot;: &quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;,
+  &quot;bytes&quot;: 2163,
+  &quot;created_at&quot;: 1759130284,
+  &quot;filename&quot;: &quot;chem_tuning_data_chat.jsonl&quot;,
+  &quot;object&quot;: &quot;file&quot;,
+  &quot;purpose&quot;: &quot;fine-tune&quot;,
+  &quot;status&quot;: &quot;processed&quot;,
+  &quot;expires_at&quot;: null,
+  &quot;status_details&quot;: null
+}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="step-3-initiate-the-fine-tuning-job">
+<h2>Step 3: Initiate the Fine-Tuning Job<a class="headerlink" href="#step-3-initiate-the-fine-tuning-job" title="Link to this heading">#</a></h2>
+<p>Now you can start the fine-tuning process by specifying a base model.<br />
+As of 2025, OpenAI supports fine-tuning on certain GPT-3.5 and GPT-4 variants (e.g., <code class="docutils literal notranslate"><span class="pre">gpt-3.5-turbo</span></code> and a special <code class="docutils literal notranslate"><span class="pre">gpt-4o</span></code> model).</p>
+<p>For example, to fine-tune <code class="docutils literal notranslate"><span class="pre">gpt-3.5-turbo</span></code> with your uploaded file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openai<span class="w"> </span>api<span class="w"> </span>fine_tunes.create<span class="w"> </span>-t<span class="w"> </span><span class="s2">&quot;&lt;YOUR FILE ID&gt;&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;gpt-3.5-turbo&quot;</span>
+</pre></div>
+</div>
+<p>Replace <YOUR FILE ID> with the ID you received from the upload step (it typically starts with file-).</p>
+<p>This command kicks off the fine-tuning job. By default, OpenAI sets sensible training hyperparameters (epochs, learning rate). You may override these (e.g., –n_epochs, –learning_rate) if you have special requirements, but defaults are usually fine for a first run.</p>
+<p>For chemistry tasks, ~4 epochs is typical; for small datasets (&lt;500 examples), you may run a few more epochs to help the model generalize.</p>
+<p>OpenAI will queue and run the job on their servers — training may take minutes to an hour depending on dataset size and model complexity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">openai</span> <span class="n">api</span> <span class="n">fine_tuning</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">create</span> <span class="o">-</span><span class="n">F</span> <span class="s2">&quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;</span> <span class="o">-</span><span class="n">m</span> <span class="n">gpt</span><span class="o">-</span><span class="mf">3.5</span><span class="o">-</span><span class="n">turbo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  &quot;id&quot;: &quot;ftjob-McgUcNQdqzxhlImTVVgoNWGl&quot;,
+  &quot;created_at&quot;: 1759132118,
+  &quot;error&quot;: {
+    &quot;code&quot;: null,
+    &quot;message&quot;: null,
+    &quot;param&quot;: null
+  },
+  &quot;fine_tuned_model&quot;: null,
+  &quot;finished_at&quot;: null,
+  &quot;hyperparameters&quot;: {
+    &quot;batch_size&quot;: &quot;auto&quot;,
+    &quot;learning_rate_multiplier&quot;: &quot;auto&quot;,
+    &quot;n_epochs&quot;: &quot;auto&quot;
+  },
+  &quot;model&quot;: &quot;gpt-3.5-turbo-0125&quot;,
+  &quot;object&quot;: &quot;fine_tuning.job&quot;,
+  &quot;organization_id&quot;: &quot;org-vVj7NX8f155Kazao4Phi3tol&quot;,
+  &quot;result_files&quot;: [],
+  &quot;seed&quot;: 1417228779,
+  &quot;status&quot;: &quot;validating_files&quot;,
+  &quot;trained_tokens&quot;: null,
+  &quot;training_file&quot;: &quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;,
+  &quot;validation_file&quot;: null,
+  &quot;estimated_finish&quot;: null,
+  &quot;integrations&quot;: [],
+  &quot;metadata&quot;: null,
+  &quot;method&quot;: {
+    &quot;type&quot;: &quot;supervised&quot;,
+    &quot;dpo&quot;: null,
+    &quot;reinforcement&quot;: null,
+    &quot;supervised&quot;: {
+      &quot;hyperparameters&quot;: {
+        &quot;batch_size&quot;: &quot;auto&quot;,
+        &quot;learning_rate_multiplier&quot;: &quot;auto&quot;,
+        &quot;n_epochs&quot;: &quot;auto&quot;
+      }
+    }
+  },
+  &quot;user_provided_suffix&quot;: null,
+  &quot;usage_metrics&quot;: null,
+  &quot;shared_with_openai&quot;: false,
+  &quot;eval_id&quot;: null
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 4: Monitor the Fine-Tune and Wait</p>
+<p>You can check the status of your fine-tuning jobs with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openai<span class="w"> </span>api<span class="w"> </span>fine_tunes.list
+</pre></div>
+</div>
+<p>This will list both active and completed fine-tune jobs, showing whether your job is pending, running, or completed.</p>
+<p>OpenAI typically also sends an email or notification when training finishes.
+If successful, you’ll receive a new model ID, for example: <code class="docutils literal notranslate"><span class="pre">ft:gpt-3.5-turbo:your-org:chem-tuned-model:version</span></code></p>
+<p>This fine-tuned model is now stored on OpenAI’s side and ready to use in API calls.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">openai</span> <span class="n">api</span> <span class="n">fine_tuning</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;ftjob-McgUcNQdqzxhlImTVVgoNWGl&quot;,
+      &quot;created_at&quot;: 1759132118,
+      &quot;error&quot;: {
+        &quot;code&quot;: null,
+        &quot;message&quot;: null,
+        &quot;param&quot;: null
+      },
+      &quot;fine_tuned_model&quot;: null,
+      &quot;finished_at&quot;: 1759132488,
+      &quot;hyperparameters&quot;: {
+        &quot;batch_size&quot;: 1,
+        &quot;learning_rate_multiplier&quot;: 2.0,
+        &quot;n_epochs&quot;: 10
+      },
+      &quot;model&quot;: &quot;gpt-3.5-turbo-0125&quot;,
+      &quot;object&quot;: &quot;fine_tuning.job&quot;,
+      &quot;organization_id&quot;: &quot;org-vVj7NX8f155Kazao4Phi3tol&quot;,
+      &quot;result_files&quot;: [],
+      &quot;seed&quot;: 1417228779,
+      &quot;status&quot;: &quot;running&quot;,
+      &quot;trained_tokens&quot;: null,
+      &quot;training_file&quot;: &quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;,
+      &quot;validation_file&quot;: null,
+      &quot;estimated_finish&quot;: null,
+      &quot;integrations&quot;: [],
+      &quot;metadata&quot;: null,
+      &quot;method&quot;: {
+        &quot;type&quot;: &quot;supervised&quot;,
+        &quot;dpo&quot;: null,
+        &quot;reinforcement&quot;: null,
+        &quot;supervised&quot;: {
+          &quot;hyperparameters&quot;: {
+            &quot;batch_size&quot;: 1,
+            &quot;learning_rate_multiplier&quot;: 2.0,
+            &quot;n_epochs&quot;: 10
+          }
+        }
+      },
+      &quot;user_provided_suffix&quot;: null,
+      &quot;usage_metrics&quot;: null,
+      &quot;shared_with_openai&quot;: false,
+      &quot;eval_id&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;ftjob-LbUkVBE7LZcwnWwRoBYqqOQa&quot;,
+      &quot;created_at&quot;: 1759132098,
+      &quot;error&quot;: {
+        &quot;code&quot;: null,
+        &quot;message&quot;: null,
+        &quot;param&quot;: null
+      },
+      &quot;fine_tuned_model&quot;: null,
+      &quot;finished_at&quot;: 1759132456,
+      &quot;hyperparameters&quot;: {
+        &quot;batch_size&quot;: 1,
+        &quot;learning_rate_multiplier&quot;: 2.0,
+        &quot;n_epochs&quot;: 10
+      },
+      &quot;model&quot;: &quot;gpt-3.5-turbo-0125&quot;,
+      &quot;object&quot;: &quot;fine_tuning.job&quot;,
+      &quot;organization_id&quot;: &quot;org-vVj7NX8f155Kazao4Phi3tol&quot;,
+      &quot;result_files&quot;: [],
+      &quot;seed&quot;: 1350736969,
+      &quot;status&quot;: &quot;running&quot;,
+      &quot;trained_tokens&quot;: null,
+      &quot;training_file&quot;: &quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;,
+      &quot;validation_file&quot;: null,
+      &quot;estimated_finish&quot;: null,
+      &quot;integrations&quot;: [],
+      &quot;metadata&quot;: null,
+      &quot;method&quot;: {
+        &quot;type&quot;: &quot;supervised&quot;,
+        &quot;dpo&quot;: null,
+        &quot;reinforcement&quot;: null,
+        &quot;supervised&quot;: {
+          &quot;hyperparameters&quot;: {
+            &quot;batch_size&quot;: 1,
+            &quot;learning_rate_multiplier&quot;: 2.0,
+            &quot;n_epochs&quot;: 10
+          }
+        }
+      },
+      &quot;user_provided_suffix&quot;: null,
+      &quot;usage_metrics&quot;: null,
+      &quot;shared_with_openai&quot;: false,
+      &quot;eval_id&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;ftjob-2Nxc4vIpewfqoMI9rFmRiXu0&quot;,
+      &quot;created_at&quot;: 1759130333,
+      &quot;error&quot;: {
+        &quot;code&quot;: null,
+        &quot;message&quot;: null,
+        &quot;param&quot;: null
+      },
+      &quot;fine_tuned_model&quot;: &quot;ft:gpt-3.5-turbo-0125:washington-university-in-st-louis-zheng-group::CL2YjEu2&quot;,
+      &quot;finished_at&quot;: 1759130759,
+      &quot;hyperparameters&quot;: {
+        &quot;batch_size&quot;: 1,
+        &quot;learning_rate_multiplier&quot;: 2.0,
+        &quot;n_epochs&quot;: 10
+      },
+      &quot;model&quot;: &quot;gpt-3.5-turbo-0125&quot;,
+      &quot;object&quot;: &quot;fine_tuning.job&quot;,
+      &quot;organization_id&quot;: &quot;org-vVj7NX8f155Kazao4Phi3tol&quot;,
+      &quot;result_files&quot;: [
+        &quot;file-MxVVtCQchNwxSz7SKjKA7n&quot;
+      ],
+      &quot;seed&quot;: 839734511,
+      &quot;status&quot;: &quot;succeeded&quot;,
+      &quot;trained_tokens&quot;: 3870,
+      &quot;training_file&quot;: &quot;file-FFgRh4gh7pBug9Lsrb7m6e&quot;,
+      &quot;validation_file&quot;: null,
+      &quot;estimated_finish&quot;: null,
+      &quot;integrations&quot;: [],
+      &quot;metadata&quot;: null,
+      &quot;method&quot;: {
+        &quot;type&quot;: &quot;supervised&quot;,
+        &quot;dpo&quot;: null,
+        &quot;reinforcement&quot;: null,
+        &quot;supervised&quot;: {
+          &quot;hyperparameters&quot;: {
+            &quot;batch_size&quot;: 1,
+            &quot;learning_rate_multiplier&quot;: 2.0,
+            &quot;n_epochs&quot;: 10
+          }
+        }
+      },
+      &quot;user_provided_suffix&quot;: null,
+      &quot;usage_metrics&quot;: null,
+      &quot;shared_with_openai&quot;: false,
+      &quot;eval_id&quot;: null
+    }
+  ],
+  &quot;has_more&quot;: false,
+  &quot;object&quot;: &quot;list&quot;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 5: Using the Fine-Tuned Model<br />
+Once ready, you use it just like any other model in the API, but by specifying the new model name. For example, in Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;ft:gpt-3.5-turbo-0125:washington-university-in-st-louis-zheng-group::CL2YjEu2&quot;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Q: What is the formula of ethanol?</span><span class="se">\n</span><span class="s2">A:&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C2H5OH
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 6: Test and Refine</p>
+<p>Evaluate your fine-tuned model on examples not in the training set to check performance. If weaknesses appear (e.g., struggles with organometallic nomenclature), add more high-quality, consistent examples and fine-tune again. Iteration is normal, but avoid over-tuning on inconsistent data. You can also fine-tune in stages by using your fine-tuned model as the new base.</p>
+<p>Step 7: Cost and Considerations</p>
+<p>Fine-tuning has costs: you pay for training tokens and a slightly higher per-call rate for the custom model. Weigh the benefits against using a base model with careful prompting. Remember, fine-tuning shapes style and task specialization, not general knowledge—it won’t add facts beyond the base model’s cutoff unless explicitly provided in training data.</p>
+</section>
+<section id="building-a-chemistry-focused-conversational-agent">
+<h2>4.3 Building a Chemistry-Focused Conversational Agent<a class="headerlink" href="#building-a-chemistry-focused-conversational-agent" title="Link to this heading">#</a></h2>
+<p>LLMs can power interactive chemistry assistants that maintain dialogue, use tools, and serve students or researchers. To improve reliability, combine them with <strong>retrieval-augmented generation (RAG)</strong>, where the model fetches relevant passages (e.g., lab manuals, reaction guides) before answering. This reduces hallucinations and ensures responses are grounded in your own chemistry resources.</p>
+<p>Step 1: Prepare and Chunk Your Chemistry Content. Split your chemistry sources into small, meaningful text chunks (e.g., by paragraph). Each chunk should fit under the token limits (typically 4096 or 8192).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example documents</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;IR Guide&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;A broad peak around 3200-3600 cm^-1 suggests O–H...&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Reactions&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;To dehydrate alcohols, use H2SO4 or POCl3...&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Break documents into chunks (split on blank lines)</span>
+<span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">para</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documents</span>
+    <span class="k">for</span> <span class="n">para</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 2: Generate Embeddings with OpenAI. Use <code class="docutils literal notranslate"><span class="pre">text-embedding-ada-002</span></code> to convert each</p>
+<p>chunk to a vector</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="c1"># Initialize the client (make sure OPENAI_API_KEY is set in your environment)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+
+<span class="c1"># Example: assume you already have a list of dicts called &#39;chunks&#39;</span>
+<span class="c1"># Each chunk looks like: {&quot;text&quot;: &quot;some text here&quot;}</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">]</span>
+
+<span class="c1"># Create embeddings with the latest API</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-embedding-ada-002&quot;</span><span class="p">,</span>  <span class="c1"># or &quot;text-embedding-3-small&quot;/&quot;text-embedding-3-large&quot;</span>
+    <span class="nb">input</span><span class="o">=</span><span class="n">texts</span>
+<span class="p">)</span>
+
+<span class="c1"># Add embeddings back into chunks</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">emb</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">chunks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">embedding</span>
+
+<span class="c1"># Optional: check the first embedding length</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First embedding dimension:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;embedding&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First embedding dimension: 1536
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 3: Embed the Question and Retrieve Similar Chunks. Embed the user’s question, then use cosine similarity to find top-matching chunks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="c1"># Initialize client (requires OPENAI_API_KEY in your environment)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+
+<span class="c1"># Example query</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;What does a strong IR peak at 1700 mean?&quot;</span>
+
+<span class="c1"># Get embedding for the query</span>
+<span class="n">qresp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="nb">input</span><span class="o">=</span><span class="p">[</span><span class="n">query</span><span class="p">],</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-embedding-ada-002&quot;</span>  <span class="c1"># or &quot;text-embedding-3-small&quot;/&quot;text-embedding-3-large&quot;</span>
+<span class="p">)</span>
+<span class="n">qvec</span> <span class="o">=</span> <span class="n">qresp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">embedding</span>
+
+<span class="c1"># Define cosine similarity</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<span class="c1"># Rank chunks by similarity</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[(</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">qvec</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;embedding&quot;</span><span class="p">]),</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">]</span>
+
+<span class="c1"># Take top 2 most relevant chunks</span>
+<span class="n">top_chunks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">context</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">text</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">top_chunks</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most relevant context:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most relevant context:
+ A broad peak around 3200-3600 cm^-1 suggests O–H...
+
+To dehydrate alcohols, use H2SO4 or POCl3...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Step 4: Create Prompt and Call ChatGPT. Construct a prompt that includes the context, then pass it to ChatGPT.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="c1"># Initialize client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+
+<span class="c1"># Build the prompt with retrieved context</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">You are a chemistry assistant. Use the context below to answer the question.</span>
+
+<span class="s2">Context:</span>
+<span class="si">{</span><span class="n">context</span><span class="si">}</span>
+
+<span class="s2">Question:</span>
+<span class="si">{</span><span class="n">query</span><span class="si">}</span>
+
+<span class="s2">Answer:</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Get completion</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-3.5-turbo&quot;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}],</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="c1"># Print the assistant&#39;s answer</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A strong IR peak at 1700 cm^-1 typically indicates the presence of a carbonyl group (C=O) in the molecule.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tool-use-and-function-calling">
+<h2>4.5 Tool Use and Function-Calling<a class="headerlink" href="#tool-use-and-function-calling" title="Link to this heading">#</a></h2>
+<p>LLMs become far more powerful when connected to external tools—functions, libraries, or databases—that provide precise results. OpenAI’s <strong>function calling</strong> feature lets models output structured calls instead of guessing, enabling verifiable answers (e.g., chemical properties from RDKit or PubChem).</p>
+<p>For example, when asked <em>“What is the molecular weight of caffeine?”</em>, the model can generate a JSON call like <code class="docutils literal notranslate"><span class="pre">get_molecular_weight(&quot;caffeine&quot;)</span></code>. Your system executes this function, retrieves the result, and returns it to the model, which then produces the final answer.</p>
+<p>This approach transforms a chatbot from speculation to computation, making it a reliable assistant for chemistry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_molecular_weight</span><span class="p">(</span><span class="n">compound_name</span><span class="p">):</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="mf">18.015</span><span class="p">,</span>
+        <span class="s2">&quot;caffeine&quot;</span><span class="p">:</span> <span class="mf">194.19</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">weights</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">compound_name</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Example function call</span>
+<span class="n">compound</span> <span class="o">=</span> <span class="s2">&quot;caffeine&quot;</span>
+<span class="n">mw</span> <span class="o">=</span> <span class="n">get_molecular_weight</span><span class="p">(</span><span class="n">compound</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">mw</span> <span class="o">!=</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The molecular weight of </span><span class="si">{</span><span class="n">compound</span><span class="si">}</span><span class="s2"> is approximately </span><span class="si">{</span><span class="n">mw</span><span class="si">}</span><span class="s2"> g/mol.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Molecular weight for </span><span class="si">{</span><span class="n">compound</span><span class="si">}</span><span class="s2"> is not in the database.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The molecular weight of caffeine is approximately 194.19 g/mol.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Chapter 3 – Foundations of AI and Tools for Chemists</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Chapter 5 – Literature and Knowledge Mining with LLMs</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-initiate-the-fine-tuning-job">Step 3: Initiate the Fine-Tuning Job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-chemistry-focused-conversational-agent">4.3 Building a Chemistry-Focused Conversational Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-use-and-function-calling">4.5 Tool Use and Function-Calling</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bingcui Guo & Zhiling "Zach" Zheng
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

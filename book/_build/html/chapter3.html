@@ -1,0 +1,1132 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 3 – Foundations of AI and Tools for Chemists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 4 – Large Language Models in Chemistry" href="chapter4.html" />
+    <link rel="prev" title="Large Language Models for Chemists: Applications and Insights" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/newlogo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="_static/newlogo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Large Language Models for Chemists: Applications and Insights
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Chapter 3 – Foundations of AI and Tools for Chemists</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html"><strong>Chapter 4 – Large Language Models in Chemistry</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html"><strong>Chapter 5 – Literature and Knowledge Mining with LLMs</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html"><strong>Chapter 6 – Generative Models for Molecule and Materials Design</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html"><strong>Chapter 7 – LLMs and Automation</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 3 – Foundations of AI and Tools for Chemists</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-python-environment">3.2.1 Setting Up a Python Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-rdkit">3.2.3 Introduction to RDKit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-atoms-and-bonds">Exploring Atoms and Bonds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-manipulation-and-standardisation">3.3.1 Molecule Manipulation and Standardisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-handling-and-enumeration">3.3.2 Reaction Handling and Enumeration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-workflows">3.3.3 Visualization Workflows</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="chapter-3-foundations-of-ai-and-tools-for-chemists">
+<h1><strong>Chapter 3 – Foundations of AI and Tools for Chemists</strong><a class="headerlink" href="#chapter-3-foundations-of-ai-and-tools-for-chemists" title="Link to this heading">#</a></h1>
+<p>This chapter lays the groundwork for applying artificial intelligence to chemistry.<br />
+We begin with core machine-learning concepts—building intuition for methods like neural networks and transformers. Next, we set up a Python environment and introduce essential libraries, with special focus on <strong>RDKit</strong> for chemoinformatics. Finally, we work through hands-on examples of molecular handling: cleaning structures, enumerating reactions, and visualizing molecules in 2D and 3D.</p>
+<p>By the end of this chapter, you will:</p>
+<ul class="simple">
+<li><p>Understand the basics of machine learning in a chemical context</p></li>
+<li><p>Know how to set up and use Python with key libraries for chemical data</p></li>
+<li><p>Have practical experience applying these tools to real molecular problems</p></li>
+</ul>
+<p>This chapter is designed as a <strong>practical, tutorial-style guide</strong>, preparing you for more advanced applications of LLMs in later chapters.</p>
+<section id="setting-up-a-python-environment">
+<h2>3.2.1 Setting Up a Python Environment<a class="headerlink" href="#setting-up-a-python-environment" title="Link to this heading">#</a></h2>
+<p>To begin working with AI tools in chemistry, we’ll set up a dedicated Python environment using <strong>Conda</strong> (via Anaconda or Miniconda). Conda makes it easy to install scientific libraries and manage dependencies such as those required by RDKit.</p>
+<p><strong>Step 1. Install Anaconda or Miniconda</strong><br />
+Download and install <a class="reference external" href="https://www.anaconda.com/download">Anaconda</a> (full distribution) or <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> (lighter version). Both provide Python and Conda; Anaconda also includes Jupyter Notebook.</p>
+<p><strong>Step 2. Create a new environment with Python 3.10</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>chem-ai<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+</pre></div>
+</div>
+<p>This creates a new environment named chem-ai with Python 3.10.</p>
+<p><strong>Step 3. Activate the environment</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>chem-ai<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+</pre></div>
+</div>
+<p>From now on, all package installs will go into this environment.</p>
+<p><strong>Step 4. Install essential packages</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>rdkit<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>scikit-learn<span class="w"> </span>matplotlib
+</pre></div>
+</div>
+<p>This installs:</p>
+<ul class="simple">
+<li><p><strong>RDKit</strong> – chemoinformatics toolkit</p></li>
+<li><p><strong>NumPy</strong> – numerical computing</p></li>
+<li><p><strong>pandas</strong> – data handling</p></li>
+<li><p><strong>scikit-learn</strong> – ML algorithms</p></li>
+<li><p><strong>matplotlib</strong> – plotting and visualization</p></li>
+</ul>
+<p><strong>Step 5. Launch Jupyter Notebook (recommended)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
+</pre></div>
+</div>
+<p>This opens an interactive web interface where you can write and run Python code, visualize molecules, and document workflows.</p>
+<p><strong>Step 6. Test your environment (optional)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy version:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After setup, you’ll have a robust local environment ready.</p>
+<ul class="simple">
+<li><p>For quick experiments, you can use <strong>cloud options</strong> like Google Colab (free, Jupyter-like, with RDKit pre-installed) or Binder notebooks.</p></li>
+<li><p>For <strong>serious projects or sensitive data</strong>, a <strong>local setup</strong> is recommended.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy version:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy version: 2.0.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python uses <strong>indentation</strong> (not braces or END statements) to define code blocks, making the syntax clean and uniform. In Jupyter Notebook, code is typed into a cell and run with <strong>Shift+Enter</strong>, showing output just below.</p>
+<p>As a simple example, we can calculate the molecular weight of ethanol (C₂H₆O):</p>
+<ul class="simple">
+<li><p>A <strong>dictionary</strong> stores atomic weights for H, C, and O</p></li>
+<li><p><strong>Square brackets</strong> access values by key</p></li>
+<li><p>The <strong>print</strong> function displays results</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">12.01</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="mf">16.00</span><span class="p">}</span>
+<span class="n">mw</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">atom</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">atom</span><span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">atom</span><span class="p">[</span><span class="s2">&quot;O&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Molecular weight of C2H6O:&quot;</span><span class="p">,</span> <span class="n">mw</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular weight of C2H6O: 46.068
+</pre></div>
+</div>
+</div>
+</div>
+<p>This trivial example already shows how chemists can do useful tasks like calculating formula weights, converting units, or applying simple rules. The real power of Python comes with its <strong>libraries</strong>: while manual calculations work for one molecule, automating across hundreds requires tools that can parse formulas and provide atomic weights. That’s where Python’s ecosystem (e.g., RDKit) becomes indispensable.</p>
+</section>
+<section id="introduction-to-rdkit">
+<h2>3.2.3 Introduction to RDKit<a class="headerlink" href="#introduction-to-rdkit" title="Link to this heading">#</a></h2>
+<p>No discussion of chemoinformatics in Python is complete without <strong>RDKit</strong>.<br />
+RDKit is an open-source toolkit that provides a wide range of functionality for working with chemical structures and data, and it is widely considered a must-have tool for chemists who program.</p>
+<p>In this section, we will:</p>
+<ul class="simple">
+<li><p>Cover how to install and set up RDKit</p></li>
+<li><p>Introduce its core concepts and usage</p></li>
+<li><p>Demonstrate basic tasks such as reading a molecule from a SMILES string, examining its properties, and manipulating it</p></li>
+</ul>
+<p>If you followed the environment setup earlier, you may already have RDKit installed.<br />
+The most straightforward way to install it is via <strong>conda</strong> using the <strong>conda-forge</strong> channel:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>rdkit
+</pre></div>
+</div>
+<p>This will pull the precompiled RDKit package for your platform and install it in your environment.</p>
+<p>After installation, test it as mentioned earlier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w">  </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CCO&#39;</span><span class="p">)</span> <span class="c1"># a simple molecule, ethanol print(mol)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;rdkit.Chem.rdchem.Mol object at 0x7cc2c1ab6f10&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>If RDKit is installed correctly, <code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles</span></code> will return a molecule object (<code class="docutils literal notranslate"><span class="pre">&lt;rdkit.Chem.rdchem.Mol</span> <span class="pre">object&gt;</span></code>).<br />
+If something went wrong, it may return <code class="docutils literal notranslate"><span class="pre">None</span></code> or raise an error.</p>
+<p>Here’s another quick test:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CCO
+</pre></div>
+</div>
+</div>
+</div>
+<p>In RDKit, the fundamental object is the Mol – an object representing a molecule. Typically, you obtain a Mol by reading in some representation, such as a SMILES string or a Mol file. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This creates an RDKit molecule for ethanol (CCO). You can also read from a MOL file or SDF:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromMolFile</span><span class="p">(</span><span class="s2">&quot;molecule.mol&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>RDKit supports many input formats (SMILES, SDF, MolBlock, InChI, etc.). If reading multiple molecules from a file (like an SDF with many entries), there are “supplier” objects (e.g., Chem.SDMolSupplier which you can loop over). But for simplicity, let’s stick to single molecules for now. What is inside a Mol object? Conceptually, RDKit represents a molecule as a graph: atoms connected by bonds. Each Atom has properties (like atomic number, formal charge, etc.), and each Bond has a type (single, double, aromatic, etc.), possibly stereochemistry, etc. RDKit’s Mol holds all this, and provides methods to access it. For example, you can iterate over atoms or bonds</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetAtoms</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetSymbol</span><span class="p">(),</span> <span class="n">atom</span><span class="o">.</span><span class="n">GetAtomicNum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C 6
+C 6
+O 8
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exploring-atoms-and-bonds">
+<h2>Exploring Atoms and Bonds<a class="headerlink" href="#exploring-atoms-and-bonds" title="Link to this heading">#</a></h2>
+<p>This example prints each atom’s symbol and atomic number in a molecule.<br />
+Similarly, <code class="docutils literal notranslate"><span class="pre">mol.GetBonds()</span></code> lets you loop through bonds.</p>
+<p>Each <strong>Atom</strong> or <strong>Bond</strong> object has a rich set of methods, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methane</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">num_atoms</span> <span class="o">=</span> <span class="n">methane</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of atoms in methane:&quot;</span><span class="p">,</span> <span class="n">num_atoms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of atoms in methane: 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>But methane (CH₄) has 5 atoms (1 carbon + 4 hydrogens)!</p>
+<p>RDKit by default considers only <strong>heavy atoms</strong> (non-hydrogens) when a molecule is created from SMILES.<br />
+In the SMILES <code class="docutils literal notranslate"><span class="pre">&quot;C&quot;</span></code> for methane, the hydrogen atoms are implicit. RDKit knows they are there (carbon has valence 4, so it assumes 4 hydrogens), but it doesn’t explicitly list them in the graph unless asked.</p>
+<p>This is a <strong>design choice</strong>: chemists often don’t want to deal with all hydrogens unless necessary, for simplicity and performance.</p>
+<p>If you want to include hydrogens explicitly, you can add them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methane_with_H</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">methane</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of atoms in methane with H:&quot;</span><span class="p">,</span> <span class="n">methane_with_H</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of atoms in methane with H: 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the molecule graph has 1 carbon and 4 hydrogens.<br />
+RDKit’s <code class="docutils literal notranslate"><span class="pre">AddHs</span></code> function makes implicit hydrogens explicit, and the corresponding <code class="docutils literal notranslate"><span class="pre">RemoveHs</span></code> function can drop them again.</p>
+<p>Most computations (e.g., fingerprints, descriptors) assume <strong>implicit hydrogens</strong>, so you usually don’t need to add them unless working with 3D geometry or specific chemistry (such as stereochemistry involving hydrogens).</p>
+<p>To illustrate accessing atomic information, consider ethanol <code class="docutils literal notranslate"><span class="pre">&quot;CCO&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ethanol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">ethanol</span><span class="o">.</span><span class="n">GetAtoms</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetSymbol</span><span class="p">(),</span> <span class="n">atom</span><span class="o">.</span><span class="n">GetMass</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C 12.011
+C 12.011
+O 15.999
+</pre></div>
+</div>
+</div>
+</div>
+<p>RDKit can compute many common molecular properties and descriptors.</p>
+<ul class="simple">
+<li><p>Some are available directly as methods, e.g. <code class="docutils literal notranslate"><span class="pre">Mol.GetNumHeavyAtoms()</span></code> or <code class="docutils literal notranslate"><span class="pre">Mol.GetMolWt()</span></code> (molecular weight).</p></li>
+<li><p>Others are available through the <strong>Descriptors</strong> module.</p></li>
+</ul>
+<p>For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span>
+<span class="n">mw</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span> <span class="c1"># molecular weight</span>
+<span class="n">logp</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span> <span class="c1"># Wildman-Crippen LogP</span>
+<span class="n">hbd</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">NumHDonors</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span> <span class="c1"># number of H-bond donors</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mw</span><span class="p">,</span> <span class="n">logp</span><span class="p">,</span> <span class="n">hbd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.069 -0.0014000000000000123 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>YRDKit also provides functions to <strong>modify molecules</strong>, though one must be mindful of chemically valid changes.</p>
+<ul class="simple">
+<li><p>You can add or remove atoms/bonds using the <strong>editable mol API</strong> (<code class="docutils literal notranslate"><span class="pre">Chem.RWMol</span></code>), though this is more advanced.</p></li>
+<li><p>More commonly, new molecules are generated via reactions or pattern substitutions.</p></li>
+</ul>
+<p>A simpler and frequent operation is <strong>standardization and cleanup</strong>.</p>
+<ul class="simple">
+<li><p>RDKit automatically <strong>sanitizes</strong> molecules on creation (checking valences, charges, aromaticity, etc.) to ensure consistency.</p></li>
+<li><p>If something seems off, you can call <code class="docutils literal notranslate"><span class="pre">Chem.SanitizeMol(mol)</span></code> manually.</p></li>
+</ul>
+<p>RDKit also makes it easy to <strong>export molecules</strong> in various formats:</p>
+<ul class="simple">
+<li><p><strong>SMILES</strong>: <code class="docutils literal notranslate"><span class="pre">Chem.MolToSmiles(mol)</span></code></p></li>
+<li><p><strong>InChI</strong>: <code class="docutils literal notranslate"><span class="pre">Chem.MolToInchi(mol)</span></code> (if InChI support is available)</p></li>
+<li><p><strong>MOL file</strong>: <code class="docutils literal notranslate"><span class="pre">Chem.MolToMolFile(mol,</span> <span class="pre">&quot;out.mol&quot;)</span></code></p></li>
+<li><p><strong>SDF file</strong>: use <code class="docutils literal notranslate"><span class="pre">Chem.SDWriter</span></code> to write multiple molecules</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span>
+<span class="c1"># Create a molecule from SMILES</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccccc1O&quot;</span><span class="p">)</span> <span class="c1"># phenol (benzene ring with an -OH)</span>
+<span class="k">if</span> <span class="n">mol</span><span class="p">:</span>
+  <span class="c1"># Basic info</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Molecule has&quot;</span><span class="p">,</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">(),</span> <span class="s2">&quot;heavy atoms and&quot;</span><span class="p">,</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetNumBonds</span><span class="p">(),</span> <span class="s2">&quot;bonds.&quot;</span><span class="p">)</span>
+  <span class="c1"># Compute some descriptors</span>
+  <span class="n">mol_wt</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+  <span class="n">num_aromatic_atoms</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetAtoms</span><span class="p">()</span> <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">GetIsAromatic</span><span class="p">())</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mol. weight = </span><span class="si">{</span><span class="n">mol_wt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Aromatic atoms = </span><span class="si">{</span><span class="n">num_aromatic_atoms</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="c1"># Generate a SMILES and InChI</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Canonical SMILES:&quot;</span><span class="p">,</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">))</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">inchi</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToInchi</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;InChI:&quot;</span><span class="p">,</span> <span class="n">inchi</span><span class="p">)</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;InChI generation not available in this RDKit build.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule has 7 heavy atoms and 7 bonds.
+Mol. weight = 94.11, Aromatic atoms = 6
+Canonical SMILES: Oc1ccccc1
+InChI: InChI=1S/C6H6O/c7-6-4-2-1-3-5-6/h1-5,7H
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="molecule-manipulation-and-standardisation">
+<h2>3.3.1 Molecule Manipulation and Standardisation<a class="headerlink" href="#molecule-manipulation-and-standardisation" title="Link to this heading">#</a></h2>
+<p>This part of the chapter applies theory and tools through hands-on examples, focusing on molecule manipulation, standardization, reaction handling, and visualization. Molecule manipulation includes programmatic changes such as adding hydrogens, applying reactions, or generating standardized forms to clean inconsistent data (e.g., removing counter-ions or salts from vendor libraries). For instance, RDKit can split a compound like <code class="docutils literal notranslate"><span class="pre">CC(=O)[O-].[Na+]</span></code> (sodium acetate) into fragments with <code class="docutils literal notranslate"><span class="pre">Chem.GetMolFrags</span></code>, allowing us to retain the main molecule (acetate) while discarding smaller fragments (such as sodium or solvents). These steps ensure that molecules are in a consistent form for modeling, while 2D and 3D visualization aids interpretation and communication of results.</p>
+<p><strong>Example:</strong> Consider sodium acetate, which in SMILES can be written as <code class="docutils literal notranslate"><span class="pre">CC(=O)[O-].[Na+]</span></code>. Using RDKit, we can split this into fragments and keep the main organic molecule (acetate) while discarding the sodium counter-ion. This ensures that the data is standardized and suitable for modeling or further analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+
+<span class="c1"># Create sodium acetate molecule (acetic acid deprotonated plus Na+)</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CC(=O)[O-].[Na+]&quot;</span><span class="p">)</span>
+
+<span class="c1"># Split into separate fragments</span>
+<span class="n">frags</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetMolFrags</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">asMols</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Identify the largest fragment by number of atoms</span>
+<span class="n">main_mol</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">frags</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">())</span>
+
+<span class="c1"># Print result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Main fragment SMILES:&quot;</span><span class="p">,</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">main_mol</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Main fragment SMILES: CC(=O)[O-]
+</pre></div>
+</div>
+</div>
+</div>
+<p>When splitting sodium acetate into fragments, RDKit will return both the acetate anion and the sodium cation. Choosing the largest fragment (by heavy atom count) gives the organic part, e.g., <code class="docutils literal notranslate"><span class="pre">CC(=O)[O-]</span></code>, which is often what we want for modeling. Depending on context, you might later protonate it (to acetic acid <code class="docutils literal notranslate"><span class="pre">CC(=O)O</span></code>).</p>
+<p>For more advanced workflows, RDKit provides the <strong>rdMolStandardize</strong> module for automatic cleanup, salt removal, and functional group normalization. Tools like <code class="docutils literal notranslate"><span class="pre">rdMolStandardize.Cleanup(mol)</span></code> or <code class="docutils literal notranslate"><span class="pre">rdMolStandardize.FragmentParent(mol)</span></code> can automate dataset preparation, extending functionality from the earlier MolVS package.</p>
+<p>Some molecules also exist in multiple tautomeric forms (e.g., keto vs enol). If not standardized, these may appear as duplicates. RDKit’s MolStandardize can enumerate tautomers and pick a canonical one.</p>
+<p>For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.MolStandardize</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdMolStandardize</span>
+
+<span class="c1"># Example molecule (enol form of an amide, possible tautomer)</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;C/C(=N</span><span class="se">\\</span><span class="s2">O)/C&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a tautomer enumerator and canonicalize</span>
+<span class="n">tautomer_enumerator</span> <span class="o">=</span> <span class="n">rdMolStandardize</span><span class="o">.</span><span class="n">TautomerEnumerator</span><span class="p">()</span>
+<span class="n">canonical</span> <span class="o">=</span> <span class="n">tautomer_enumerator</span><span class="o">.</span><span class="n">Canonicalize</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+
+<span class="c1"># Print result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Canonical tautomer SMILES:&quot;</span><span class="p">,</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">canonical</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Canonical tautomer SMILES: CC(C)=NO
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, RDKit represents molecules in a <strong>non-explicit hydrogen</strong> form (except where necessary).<br />
+For example, when you read a SMILES like <code class="docutils literal notranslate"><span class="pre">CCO</span></code>, RDKit knows the hydrogens are present, but they are <strong>implicit</strong> (each carbon in ethanol has an implicit H count of 3 or 2).</p>
+<p>If you need to enumerate all atoms including hydrogens—for tasks like 3D operations or explicit valence counting—you can <strong>add them explicitly</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+
+<span class="c1"># Create ethanol molecule</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add explicit hydrogens</span>
+<span class="n">mol_with_h</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+
+<span class="c1"># Compare atom counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Atom count before adding H:&quot;</span><span class="p">,</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">(),</span>
+      <span class="s2">&quot;; after:&quot;</span><span class="p">,</span> <span class="n">mol_with_h</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Atom count before adding H: 3 ; after: 9
+</pre></div>
+</div>
+</div>
+</div>
+<p>For ethanol, before adding hydrogens, RDKit’s <code class="docutils literal notranslate"><span class="pre">GetNumAtoms()</span></code> counts 3 (2 carbons + 1 oxygen). After adding hydrogens, it counts 9 (the 3 heavy atoms plus 6 hydrogens). If needed, you can later remove them with <code class="docutils literal notranslate"><span class="pre">Chem.RemoveHs(mol_with_h)</span></code>.</p>
+<p>As part of standardization, you may also want to <strong>filter molecules</strong> that don’t meet certain criteria (e.g., very large molecules, inorganic species, or compounds exceeding a molecular weight threshold). RDKit makes this straightforward: after computing descriptors, you can apply filters to enforce rules (such as Lipinski’s Rule-of-5 for drug-likeness).</p>
+<p>Example pipeline: given a list of SMILES, standardize each by removing salts, then keep only those under a set molecular weight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span>
+
+<span class="c1"># Example molecules: sodium acetate, benzoic acid, and an amine salt</span>
+<span class="n">smiles_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CC(=O)[O-].[Na+]&quot;</span><span class="p">,</span> <span class="s2">&quot;c1ccc(cc1)C(=O)O&quot;</span><span class="p">,</span> <span class="s2">&quot;CN(C)C.Cl&quot;</span><span class="p">]</span>
+
+<span class="n">cleaned_mols</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">smi</span> <span class="ow">in</span> <span class="n">smiles_list</span><span class="p">:</span>
+    <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
+
+    <span class="c1"># Remove salts by taking the largest fragment</span>
+    <span class="n">frags</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetMolFrags</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">asMols</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">main</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">frags</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">())</span>
+
+    <span class="c1"># Compute molecular weight</span>
+    <span class="n">mw</span> <span class="o">=</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+
+    <span class="c1"># Keep only molecules under 300 Da</span>
+    <span class="k">if</span> <span class="n">mw</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">cleaned_mols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">main</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kept </span><span class="si">{</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="si">}</span><span class="s2"> with MW </span><span class="si">{</span><span class="n">mw</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="si">}</span><span class="s2"> with MW </span><span class="si">{</span><span class="n">mw</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> (too heavy)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kept CC(=O)[O-] with MW 59.0
+Kept O=C(O)c1ccccc1 with MW 122.1
+Kept CN(C)C with MW 59.1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reaction-handling-and-enumeration">
+<h2>3.3.2 Reaction Handling and Enumeration<a class="headerlink" href="#reaction-handling-and-enumeration" title="Link to this heading">#</a></h2>
+<p>Chemical reactions are central to synthetic chemistry, and being able to represent and manipulate them computationally enables tasks like virtual library generation or reaction outcome prediction. Before using advanced models (like LLMs for retrosynthesis), it’s helpful to understand how reactions can be encoded and enumerated with RDKit.</p>
+<p>RDKit represents reactions with the <code class="docutils literal notranslate"><span class="pre">ChemicalReaction</span></code> class, which can be created from a <strong>reaction SMARTS</strong> string (<code class="docutils literal notranslate"><span class="pre">ReactantSmarts1.ReactantSmarts2...</span> <span class="pre">&gt;&gt;</span> <span class="pre">ProductSmarts</span></code>). Atoms are typically annotated with labels (e.g., <code class="docutils literal notranslate"><span class="pre">[C:1]</span></code>, <code class="docutils literal notranslate"><span class="pre">[O:2]</span></code>, <code class="docutils literal notranslate"><span class="pre">[N:3]</span></code>) to ensure mapping between reactants and products.</p>
+<p>For example, in a simple amide formation between an acid chloride and an amine, the reaction SMARTS could be written as: <code class="docutils literal notranslate"><span class="pre">[C:1]Cl.[N:3]&gt;&gt;[C:1][N:3]</span></code></p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">[C:1]</span></code> is the carbonyl carbon, <code class="docutils literal notranslate"><span class="pre">[O:2]</span></code> the carbonyl oxygen, and <code class="docutils literal notranslate"><span class="pre">[N:3]</span></code> the nitrogen from the amine. The mapping ensures that the product shows the new bond between carbonyl carbon and nitrogen.</p>
+<p>This SMARTS doesn’t explicitly account for the HCl leaving group (we are essentially ignoring it in the products by not writing it, so it will be a byproduct not captured). For our purposes of enumeration, that’s fine. Using RDKit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
+
+<span class="c1"># Define an amide formation reaction: acid chloride + amine → amide</span>
+<span class="n">rxn</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReactionFromSmarts</span><span class="p">(</span><span class="s1">&#39;[C:1](=[O:2])Cl.[N:3]&gt;&gt;[C:1](=[O:2])[N:3]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Example reactants</span>
+<span class="n">reactant1</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CC(=O)Cl&quot;</span><span class="p">)</span>   <span class="c1"># acetyl chloride</span>
+<span class="n">reactant2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;NCC&quot;</span><span class="p">)</span>        <span class="c1"># ethylamine</span>
+
+<span class="c1"># Run the reaction</span>
+<span class="n">products</span> <span class="o">=</span> <span class="n">rxn</span><span class="o">.</span><span class="n">RunReactants</span><span class="p">((</span><span class="n">reactant1</span><span class="p">,</span> <span class="n">reactant2</span><span class="p">))</span>
+
+<span class="c1"># Print product SMILES</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">prod_set</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">products</span><span class="p">):</span>
+    <span class="n">prod</span> <span class="o">=</span> <span class="n">prod_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># each result is a tuple of products (we have one main product here)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Product </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">prod</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Product 1: CCNC(C)=O
+</pre></div>
+</div>
+</div>
+</div>
+<p>The real power of RDKit reactions comes when working with sets of reactants.<br />
+For example, if you have a list of acid chlorides and a list of amines, you can enumerate all possible amides by combining each acid chloride with each amine. Using nested loops and <code class="docutils literal notranslate"><span class="pre">rxn.RunReactants</span></code>, RDKit will generate the products for each combination.</p>
+<p>For simple reactions like this, you usually get one main product, though some reactions may yield multiple products or stereoisomers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
+
+<span class="c1"># Define amide formation reaction: acid chloride + amine → amide</span>
+<span class="n">rxn</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReactionFromSmarts</span><span class="p">(</span><span class="s1">&#39;[C:1](=[O:2])Cl.[N:3]&gt;&gt;[C:1](=[O:2])[N:3]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Acid chlorides: acetic chloride and benzoyl chloride</span>
+<span class="n">acid_chlorides</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;CC(=O)Cl&quot;</span><span class="p">,</span> <span class="s2">&quot;O=C(Cl)c1ccccc1&quot;</span><span class="p">]]</span>
+
+<span class="c1"># Amines: ethylamine and aniline</span>
+<span class="n">amines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;NCC&quot;</span><span class="p">,</span> <span class="s2">&quot;Nc1ccccc1&quot;</span><span class="p">]]</span>
+
+<span class="c1"># Run reactions</span>
+<span class="k">for</span> <span class="n">acid</span> <span class="ow">in</span> <span class="n">acid_chlorides</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">amine</span> <span class="ow">in</span> <span class="n">amines</span><span class="p">:</span>
+        <span class="n">prods</span> <span class="o">=</span> <span class="n">rxn</span><span class="o">.</span><span class="n">RunReactants</span><span class="p">((</span><span class="n">acid</span><span class="p">,</span> <span class="n">amine</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">prod_set</span> <span class="ow">in</span> <span class="n">prods</span><span class="p">:</span>
+            <span class="n">prod_smiles</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">prod_set</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">acid</span><span class="p">)</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">amine</span><span class="p">)</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">prod_smiles</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CC(=O)Cl + CCN -&gt; CCNC(C)=O
+CC(=O)Cl + Nc1ccccc1 -&gt; CC(=O)Nc1ccccc1
+O=C(Cl)c1ccccc1 + CCN -&gt; CCNC(=O)c1ccccc1
+O=C(Cl)c1ccccc1 + Nc1ccccc1 -&gt; O=C(Nc1ccccc1)c1ccccc1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualization-workflows">
+<h2>3.3.3 Visualization Workflows<a class="headerlink" href="#visualization-workflows" title="Link to this heading">#</a></h2>
+<p>The final part of our hands-on practice is visualization. RDKit can generate <strong>2D images</strong> of molecules directly in Jupyter, computing coordinates and rendering atoms and bonds.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Draw.MolToImage(mol,</span> <span class="pre">size=(w,h))</span></code> → returns a PIL image (can be shown in a notebook or saved, e.g., <code class="docutils literal notranslate"><span class="pre">img.save(&quot;mol.png&quot;)</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Draw.MolsToGridImage([mol1,</span> <span class="pre">mol2,</span> <span class="pre">...],</span> <span class="pre">molsPerRow=4,</span> <span class="pre">subImgSize=(200,200),</span> <span class="pre">legends=[...])</span></code> → creates a grid of molecules, useful for comparisons.</p></li>
+</ul>
+<p>For <strong>publication-quality figures</strong>, RDKit’s <code class="docutils literal notranslate"><span class="pre">MolDraw2D</span></code> can export to SVG (scalable vector graphics). For most quick tasks, PNG via <code class="docutils literal notranslate"><span class="pre">MolToImage</span></code> is sufficient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="c1"># Single molecule: pyridine</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccncc1&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">))</span>
+<span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;pyridine.png&quot;</span><span class="p">)</span>  <span class="c1"># Save to file</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;pyridine.png&quot;</span><span class="p">))</span>  <span class="c1"># Show inline</span>
+
+<span class="c1"># Multiple molecules in a grid</span>
+<span class="n">smiles_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CCO&quot;</span><span class="p">,</span> <span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span> <span class="s2">&quot;CCN(CC)CC&quot;</span><span class="p">,</span> <span class="s2">&quot;C1=CC=CC=C1C(O)=O&quot;</span><span class="p">]</span>  <span class="c1"># ethanol, benzene, triethylamine, benzoic acid</span>
+<span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">smiles_list</span><span class="p">]</span>
+
+<span class="n">img2</span> <span class="o">=</span> <span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span>
+    <span class="n">mols</span><span class="p">,</span>
+    <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span>
+    <span class="n">legends</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Ethanol&quot;</span><span class="p">,</span> <span class="s2">&quot;Benzene&quot;</span><span class="p">,</span> <span class="s2">&quot;Triethylamine&quot;</span><span class="p">,</span> <span class="s2">&quot;Benzoic acid&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7ed381d0e902513891e9b617c6f0fcbe4e07c6ad3a462b2dee7d863ffad64346.png" src="_images/7ed381d0e902513891e9b617c6f0fcbe4e07c6ad3a462b2dee7d863ffad64346.png" />
+</div>
+</div>
+<p>While 2D diagrams show connectivity, 3D visualization reveals molecular shape and conformation—important for sterics, binding, and interactions. RDKit can generate 3D coordinates (via embedding and force fields), but it lacks a built-in 3D viewer. Typically, structures can be exported (MOL2, PDB) and viewed in external tools like PyMOL or Chimera.</p>
+<p>Within notebooks, a common solution is <strong>py3Dmol</strong>, which brings the 3Dmol.js WebGL viewer into Python for interactive molecular visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">py3Dmol</span>
+
+<span class="c1"># Example molecule</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CC(O)C(O)C&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add explicit hydrogens</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+
+<span class="c1"># Generate 3D coordinates</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">EmbedMolecule</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">MMFFOptimizeMolecule</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+
+<span class="c1"># Convert to MOL block</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+
+<span class="c1"># 3D viewer</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">addModel</span><span class="p">(</span><span class="n">mb</span><span class="p">,</span> <span class="s2">&quot;mol&quot;</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s2">&quot;stick&quot;</span><span class="p">:</span> <span class="p">{}})</span>
+<span class="n">view</span><span class="o">.</span><span class="n">zoomTo</span><span class="p">()</span>
+<span class="n">view</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="3dmolviewer_176426380020284"  style="position: relative; width: 300px; height: 300px;">
+        <p id="3dmolwarning_176426380020284" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdn.jsdelivr.net/npm/3dmol@2.5.3/build/3Dmol-min.js');
+}
+
+var viewer_176426380020284 = null;
+var warn = document.getElementById("3dmolwarning_176426380020284");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_176426380020284 = $3Dmol.createViewer(document.getElementById("3dmolviewer_176426380020284"),{backgroundColor:"white"});
+viewer_176426380020284.zoomTo();
+	viewer_176426380020284.addModel("\n     RDKit          3D\n\n 16 15  0  0  0  0  0  0  0  0999 V2000\n    1.0296    1.2230    0.4028 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.9544   -0.2681    0.0980 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.8769   -0.5334   -0.9655 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.4407   -0.7634   -0.3344 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.8210   -0.1111   -1.5535 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.5214   -0.5676    0.7181 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.3875    1.4985    1.2438 H   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7506    1.8247   -0.4686 H   0  0  0  0  0  0  0  0  0  0  0  0\n    2.0586    1.5040    0.6536 H   0  0  0  0  0  0  0  0  0  0  0  0\n    1.2928   -0.8326    0.9736 H   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3826   -0.3692   -1.7936 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.3676   -1.8296   -0.5784 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.1497    0.7777   -1.3319 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.7183    0.4932    0.9037 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.2476   -1.0479    1.6621 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -2.4668   -0.9981    0.3701 H   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  1  0\n  2  4  1  0\n  4  5  1  0\n  4  6  1  0\n  1  7  1  0\n  1  8  1  0\n  1  9  1  0\n  2 10  1  0\n  3 11  1  0\n  4 12  1  0\n  5 13  1  0\n  6 14  1  0\n  6 15  1  0\n  6 16  1  0\nM  END\n","mol");
+	viewer_176426380020284.setStyle({"stick": {}});
+	viewer_176426380020284.zoomTo();
+viewer_176426380020284.render();
+});
+</script></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Large Language Models for Chemists: Applications and Insights</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Chapter 4 – Large Language Models in Chemistry</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-python-environment">3.2.1 Setting Up a Python Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-rdkit">3.2.3 Introduction to RDKit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-atoms-and-bonds">Exploring Atoms and Bonds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-manipulation-and-standardisation">3.3.1 Molecule Manipulation and Standardisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-handling-and-enumeration">3.3.2 Reaction Handling and Enumeration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-workflows">3.3.3 Visualization Workflows</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bingcui Guo & Zhiling "Zach" Zheng
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
