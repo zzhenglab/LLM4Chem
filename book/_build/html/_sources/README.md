@@ -21,6 +21,9 @@ llm4chem/
 │
 ├── book/                     # Jupyter Book source files
 ├── notebooks/                # Colab-ready tutorial notebooks
+├── data/                     # Chemical datasets
+├── figures/                  # Images and figures
+├── website_config/           # Jupyter Book configuration
 └── README.md                 # This file
 ```
 
@@ -44,7 +47,7 @@ Open any notebook and click “Open in Colab” to run directly in a browser.
 ### Build the Jupyter Book locally
 ```
 pip install -r requirements.txt
-jupyter-book build . --all -v
+jupyter-book build book/
 ```
 
 ### Adapt for teaching
