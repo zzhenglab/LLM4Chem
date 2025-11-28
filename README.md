@@ -44,11 +44,7 @@ Open any notebook and click “Open in Colab” to run directly in a browser.
 ### Build the Jupyter Book locally
 ```
 pip install -r requirements.txt
-<<<<<<< HEAD
 jupyter-book build . --all -v
-=======
-jupyter-book build book/
->>>>>>> b8016592427172b19b0e1badb93e58ac0d48d336
 ```
 
 ### Adapt for teaching
@@ -74,8 +70,6 @@ Department of Chemistry
 Washington University in St. Louis
 
 Bingcui Guo
-<<<<<<< HEAD
+
 # LLM4Chem
 Feel free to download the Jupyter Notebook as iteractive example to use. 
-=======
->>>>>>> b8016592427172b19b0e1badb93e58ac0d48d336
