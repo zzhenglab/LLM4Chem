@@ -1,4 +1,4 @@
-# LLM4CHEM: Large Language Models for Chemists: Applications and Insights
+# LLM4CHEM: Large Language Models for Chemists - Applications and Insights
 
 <img src="https://github.com/zzhenglab/LLM4Chem/blob/main/book/newlogo.png" width="250">
 
