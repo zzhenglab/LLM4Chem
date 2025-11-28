@@ -19,7 +19,11 @@ https://zzhenglab.github.io/LLM4Chem/intro.html#
 ```
 llm4chem/
 │
-├── book/                     # Jupyter Book source files
+├── _build/                   # Essential files for this book
+├── _images/                  # Images for rendering pages
+├── _sources/                 # Source for rendering the page
+├── _sphinx_design_static/    # Static assets for rendering pages
+├── _static/                  # Static assets for rendering pages 
 ├── notebooks/                # Colab-ready tutorial notebooks
 └── README.md                 # This file
 ```
@@ -70,5 +74,6 @@ Department of Chemistry
 Washington University in St. Louis
 
 Bingcui Guo
+
 # LLM4Chem
 Feel free to download the Jupyter Notebook as iteractive example to use. 
